@@ -23,7 +23,7 @@ From executing a `$ docker inspect mysql` we see that this container has two vol
 Launch `dockup` container with the following flags:
 
 ```
-$ docker run -d \
+$ docker run --rm \
 --env-file env.txt \
 --volumes-from mysql \
 --name dockup borja/dockup
@@ -39,5 +39,6 @@ PATHS_TO_BACKUP=/etc/mysql /var/lib/mysql
 S3_BUCKET_NAME=DOCKER_VOL_BACKUPS
 ```
 
-`dockup` will user your AWS credentials to create a new bucket with name as per the environment variable `S3_BUCKET_NAME`, or if not defined, using the default name `DOCKER_BACKUPS`. The paths in `PATHS_TO_BACKUP` will be tarballed, gzipped, time-stamped and uploaded to the S3 bucket. 
+`dockup` will use your AWS credentials to create a new bucket with name as per the environment variable `S3_BUCKET_NAME`, or if not defined, using the default name `DOCKER_BACKUPS`. The paths in `PATHS_TO_BACKUP` will be tarballed, gzipped, time-stamped and uploaded to the S3 bucket. 
 
+![](http://s.tutum.co.s3.amazonaws.com/support/images/dockup-readme.png)
