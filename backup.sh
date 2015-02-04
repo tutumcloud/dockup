@@ -4,7 +4,7 @@
 now=$(date +"%Y-%m-%d-%H-%M-%S")
 
 # Create a gzip compressed tarball with the volume(s)
-tar czf $BACKUP_NAME.$now.tar.gz $PATH_TO_BACKUP
+tar czf $BACKUP_NAME.$now.tar.gz $PATHS_TO_BACKUP
 
 # Create bucket, if it doesn't already exist
 aws mkdir $S3_BUCKET_NAME
