@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Borja Burgos <borja@tutum.co>
+MAINTAINER Borja Burgos <borja@tutum.co>, Mia Iversen <mia@chillfox.com
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install groff awscli
 
