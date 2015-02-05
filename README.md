@@ -64,4 +64,7 @@ These rules are enforced in some regions.
 | South America (Sao Paulo) | sa-east-1      |
 
 
+To perform a restore launch the container with the RESTORE variable set to true
+
+
 ![](http://s.tutum.co.s3.amazonaws.com/support/images/dockup-readme.png)
