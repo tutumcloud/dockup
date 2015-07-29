@@ -1,7 +1,7 @@
 FROM ubuntu:trusty
 MAINTAINER Borja Burgos <borja@tutum.co>, Mia Iversen <mia@chillfox.com
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install groff awscli
+RUN apt-get update && apt-get install -y python-pip && pip install awscli
 
 ADD backup.sh /backup.sh
 ADD restore.sh /restore.sh
