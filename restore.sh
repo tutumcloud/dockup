@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 
 # Find last backup file
 : ${LAST_BACKUP:=$(aws s3 ls s3://$S3_BUCKET_NAME | awk -F " " '{print $4}' | grep ^$BACKUP_NAME | sort -r | head -n1)}
