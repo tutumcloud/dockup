@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export PATH=$PATH:/usr/bin:/usr/local/bin:/bin
 # Get timestamp
 : ${BACKUP_SUFFIX:=.$(date +"%Y-%m-%d-%H-%M-%S")}
 readonly tarball=$BACKUP_NAME$BACKUP_SUFFIX.tar.gz
