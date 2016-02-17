@@ -24,13 +24,14 @@ From executing a `$ docker inspect mysql` we see that this container has two vol
         }
 ```
 
+## Backup
 Launch `dockup` container with the following flags:
 
 ```
 $ docker run --rm \
 --env-file env.txt \
 --volumes-from mysql \
---name dockup borja/dockup
+--name dockup tutum/dockup:latest
 ```
 
 The contents of `env.txt` being:
@@ -42,10 +43,17 @@ AWS_DEFAULT_REGION=us-east-1
 BACKUP_NAME=mysql
 PATHS_TO_BACKUP=/etc/mysql /var/lib/mysql
 S3_BUCKET_NAME=docker-backups.example.com
+RESTORE=false
 ```
 
 `dockup` will use your AWS credentials to create a new bucket with name as per the environment variable `S3_BUCKET_NAME`, or if not defined, using the default name `docker-backups.example.com`. The paths in `PATHS_TO_BACKUP` will be tarballed, gzipped, time-stamped and uploaded to the S3 bucket.
 
+
+## Restore
+To restore your data simply set the `RESTORE` environment variable to `true` - this will restore the latest backup from S3 to your volume.
+
+
+## A note on Buckets
 
 > [Bucket naming guidelines](http://docs.aws.amazon.com/cli/latest/userguide/using-s3-commands.html):
 > "Bucket names must be unique and should be DNS compliant. Bucket names can contain lowercase letters, numbers, hyphens and periods. Bucket names can only start and end with a letter or number, and cannot contain a period next to a hyphen or another period."
