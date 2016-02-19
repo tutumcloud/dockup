@@ -1,7 +1,10 @@
-FROM ubuntu:trusty
+FROM alpine:latest
 MAINTAINER Borja Burgos <borja@tutum.co>, Mia Iversen <mia@chillfox.com
 
-RUN apt-get update && apt-get install -y python-pip && pip install awscli
+RUN apk add --update-cache python py-pip ca-certificates tzdata &&\
+    pip install awscli &&\
+    rm -fR /etc/periodic &&\
+    rm -rf /var/cache/apk/*
 
 ADD backup.sh /backup.sh
 ADD restore.sh /restore.sh
