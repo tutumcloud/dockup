@@ -16,3 +16,6 @@ fi
 
 # Upload the backup to S3 with timestamp
 aws s3 --region $AWS_DEFAULT_REGION cp $tarball s3://$S3_BUCKET_NAME/$tarball
+
+# Clean up
+rm $tarball
