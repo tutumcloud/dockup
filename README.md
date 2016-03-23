@@ -48,10 +48,10 @@ RESTORE=false
 
 `dockup` will use your AWS credentials to create a new bucket with name as per the environment variable `S3_BUCKET_NAME`, or if not defined, using the default name `docker-backups.example.com`. The paths in `PATHS_TO_BACKUP` will be tarballed, gzipped, time-stamped and uploaded to the S3 bucket.
 
+If you want `dockup` to run as a cron task, you can set the environment variable `CRON_TIME` to the desired frequency, for example `CRON_TIME=0 0 * * *` to backup every day at midnight.
 
 ## Restore
-To restore your data simply set the `RESTORE` environment variable to `true` - this will restore the latest backup from S3 to your volume.
-
+To restore your data simply set the `RESTORE` environment variable to `true` - this will restore the latest backup from S3 to your volume. If you want to restore a specific backup instead of the last one, you can also set the environment variable `LAST_BACKUP` to the desired tarball name.
 
 ## A note on Buckets
 
