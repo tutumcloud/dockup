@@ -50,8 +50,12 @@ RESTORE=false
 
 If you want `dockup` to run as a cron task, you can set the environment variable `CRON_TIME` to the desired frequency, for example `CRON_TIME=0 0 * * *` to backup every day at midnight.
 
+For more complex backup tasks as dumping a database, you can optionally define the environment variables `BEFORE_BACKUP_CMD` and `AFTER_BACKUP_CMD`.
+
 ## Restore
 To restore your data simply set the `RESTORE` environment variable to `true` - this will restore the latest backup from S3 to your volume. If you want to restore a specific backup instead of the last one, you can also set the environment variable `LAST_BACKUP` to the desired tarball name.
+
+For more complex restore operations, you can define a command to be run once the tarball has been downloaded and extracted using the environment variable `AFTER_RESTORE_CMD`.
 
 ## A note on Buckets
 
