@@ -57,7 +57,7 @@ Add a new entry to the `env.txt` to enable cron jobs. The time format is the sam
 CRON_TIME=0 6 * * * 
 ```
 
-Start the Dockerup with the --detach option in order to keep the container running.
+Start the Dockup container with the `--detach` option in order to keep the container running.
 
 ```
 $ docker run --detach \
