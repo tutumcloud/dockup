@@ -46,7 +46,25 @@ S3_BUCKET_NAME=docker-backups.example.com
 RESTORE=false
 ```
 
-`dockup` will use your AWS credentials to create a new bucket with name as per the environment variable `S3_BUCKET_NAME`, or if not defined, using the default name `docker-backups.example.com`. The paths in `PATHS_TO_BACKUP` will be tarballed, gzipped, time-stamped and uploaded to the S3 bucket.
+`dockup` will use your AWS credentials to create a new bucket with name as per the environment variable `S3_BUCKET_NAME`, or if not defined, using the default name `docker-backups.example.com`. The paths in `PATHS_TO_BACKUP` will be tarballed, gzipped, time-stamped and uploaded to the S3 bucket. 
+
+# Running Dockup as a Cron Job
+It is also possible to start the container in detached mode and have it run as a cron job backup up your volumes on a schedule.
+
+Add a new entry to the `env.txt` to enable cron jobs. The time format is the same as a normal crontab job entry. 
+
+````
+CRON_TIME=0 6 * * * 
+```
+
+Start the Dockup container with the `--detach` option in order to keep the container running.
+
+```
+$ docker run --detach \
+--env-file env.txt \
+--volumes-from mysql \
+--name dockup tutum/dockup:latest
+```
 
 
 ## Restore
