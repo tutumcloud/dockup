@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Borja Burgos <borja@tutum.co>, Mia Iversen <mia@chillfox.com
+MAINTAINER Borja Burgos <borja@tutum.co>, Mia Iversen <mia@chillfox.com>
 
 RUN apt-get update && apt-get install -y python-pip && pip install awscli
 
