@@ -48,6 +48,8 @@ RESTORE=false
 
 `dockup` will use your AWS credentials to create a new bucket with name as per the environment variable `S3_BUCKET_NAME`, or if not defined, using the default name `docker-backups.example.com`. The paths in `PATHS_TO_BACKUP` will be tarballed, gzipped, time-stamped and uploaded to the S3 bucket.
 
+Both `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` are optional if your Docker container is executed in an environment where these credentials are provided -- for example, an AWS IAM role.
+
 
 ## Restore
 To restore your data simply set the `RESTORE` environment variable to `true` - this will restore the latest backup from S3 to your volume.
